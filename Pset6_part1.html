@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<head>
+
+<meta charset="utf-8">
+<style>
+  .states {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+  }
+
+</style>
+</head>
+<body>
+
+<h1> 2016 General Election - Margin of Victory by County
+</h1>
+<p>Percentage Points
+</p>
+
+<section id="d3ref" class="d3ref-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <svg width="320" height="80">
+                    <rect y="20" height="15" width="50" fill='#eff3ff'></rect>
+                    <rect y="20" x= "40" height="15" width="50" fill='#bdd7e7'></rect>
+                    <rect y="20" x="80" height="15" width="50" fill='#6baed6'></rect>
+                    <rect y="20" x="120" height="15" width="50" fill='#2171b5'></rect>
+                    <rect y="20" x="160" height="15" width="50" fill='#fee5d9'></rect>
+                    <rect y="20" x="200" height="15" width="50" fill='#fcae91'></rect>
+                    <rect y="20" x="240" height="15" width="50" fill='#fb6a4a'></rect>
+                    <rect y="20" x="280" height="15" width="50" fill='#cb181d'></rect>
+                    <text x="0" y="15" fill="black" font-size="14">Clinton</text>
+                    <text x="280" y="15" fill="black" font-size="14">Trump</text>
+                    <text x="5" y="55" fill="black" font-size="14">>50%</text>
+                    <text x="50" y="55" fill="black" font-size="14">25%</text>
+                    <text x="88" y="55" fill="black" font-size="14">10%</text>
+                    <text x="124" y="55" fill="black" font-size="14"> <10% </text>
+                    <text x="165" y="55" fill="black" font-size="14"> <10% </text>
+                    <text x="208" y="55" fill="black" font-size="14">10%</text>
+                    <text x="246" y="55" fill="black" font-size="14">25%</text>
+                    <text x="285" y="55" fill="black" font-size="14">>50%</text>
+                  </svg>
+                <div>
+            </div>
+          </div>
+        </section>
+
+<!-- <div class='my-legend'>
+<div class='legend-scale'>
+  <ul class='legend-labels'>
+    <li><span style='background:#eff3ff;'></span><50%</li>
+    <li><span style='background:#bdd7e7;'></span>25%</li>
+    <li><span style='background:#6baed6;'></span>10%</li>
+    <li><span style='background:#2171b5;'></span><10%</li>
+    <li><span style='background:#fee5d9;'></span><10%</li>
+    <li><span style='background:#fcae91;'></span>10%</li>
+    <li><span style='background:#fb6a4a;'></span>25%</li>
+    <li><span style='background:#cb181d;'></span><50%</li>
+  </ul>
+</div>
+</div>
+<style type='text/css'>
+  .my-legend .legend-title {
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .my-legend .legend-scale ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .my-legend .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+    }
+  .my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    text-align: center;
+    }
+  .my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+    text-align: center;
+    }
+  .my-legend a {
+    color: #777;
+    text-align: center;
+    }
+</style> 
+<br> -->
+<section id="d3ref" class="d3ref-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <div id="map"></div>
+                  <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+                  <script src="https://d3js.org/d3.v4.min.js"></script>
+                  <script src="https://d3js.org/d3-array.v1.min.js"></script>
+                  <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+                  <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+                  <script src="https://d3js.org/topojson.v2.min.js"></script>
+                  <script>
+                    var width = 960,
+                        height = 500;
+
+                    var projection = d3.geoAlbersUsa()
+                        .scale(1000)
+                        .translate([width / 2, height / 2]);
+
+                    // d3 geopath for projection
+                    var path = d3.geoPath()
+                        .projection(projection);
+
+                    // create SVG elements in map HTML element
+                    var svg = d3.select("#map").append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
+
+                    // set color
+                    var color = d3.scaleThreshold()
+                        .domain([-0.5, -0.25, -0.1, 0, 0.1, 0.25, 0.5])
+                        .range(['#eff3ff','#bdd7e7','#6baed6','#2171b5','#fee5d9','#fcae91','#fb6a4a','#cb181d']);
+
+                    // queue up the datasets, run 'ready' when loaded
+                    d3.queue()
+                        .defer(d3.json, "data/us.json")
+                        .defer(d3.csv, "data/election_2016_county_results.csv")
+                        .await(ready);
+
+                    // create the graphic with this runction
+                    function ready(error, us, election_2016_county_results) {
+                      if (error) throw error;
+
+                      var rateById = {}; // Create empty object for holding dataset
+                     election_2016_county_results.forEach(function(d) {
+                        rateById[d.id] = d.victory_margin; // Create property for each ID, give it value from rate
+                        // important: cast rate to numeric value (+)
+                      });
+                      console.log(rateById);
+                      
+                      // create and style counties
+                      svg.append("g")
+                          .attr("class", "counties")
+                        .selectAll("path")
+                          .data(topojson.feature(us, us.objects.counties).features)
+                        .enter().append("path")
+                          .attr("d", path)
+                          .style("fill", function(d) { return color(rateById[d.id]); });
+
+                      // create state outlines
+                      svg.append("path")
+                          .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a.id !== b.id; }))
+                          .attr("class", "states")
+                          .attr("d", path);
+                    }
+                  </script>
+                  <p>Source:<a href = "https://townhall.com">Townhall.com</a>
+                  </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+</body>
+</html>
