@@ -16,16 +16,11 @@ map.addControl(
     })
 );
 
-var url='https://github.com/haijing1017/TMO/blob/main/assets/geojsons/Typology.geojson'
-
 map.on('load', function () {
 
 map.addSource('Typology', {
 'type': 'geojson',
-'data':url //"./GeoObs.json",
-        /*cluster: true,
-        clusterMaxZoom: 15, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)*/
+'data':'Typology.geojson'
     
 });
 
