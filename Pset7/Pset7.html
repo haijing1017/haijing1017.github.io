@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<head>
+	<title>Pset7</title>
+	
+	<style>
+		body {
+		    
+		    font-family: "Proxima Nova", "Montserrat", sans-serif;
+		    text-align: center;
+		}
+		h1, h2 {
+		    
+		    left: 10px;
+		    font-size: 1.3em;
+		    font-weight: 100;
+		    text-align: center;
+		}
+		h2 {
+		    top: 20px;
+		    font-size: 1em;
+		}
+		/* REMOVE .incident FILL CSS */
+		
+		/* ADD CSS FOR #sliderContainer */
+		#sliderContainer {
+		    text-align: center;
+		    position: relative;
+		    top: 600px;
+		}
+		#sliderContainer input{
+			appearance:none;
+			-webkit-appearance:none;
+			width:100px;
+			height:6px;
+			border-radius: 2px;
+			border:1px solid #ddd;
+			outline:none;
+			box-shadow:0 1px 1px #fff, inset 0 1px 1px #ddd;
+		}
+		#sliderContainer input::-webkit-slider-thumb{
+			appearance:none;
+			-webkit-appearance:none;
+			width:15px;
+			height: 15px;
+			border-radius: 50px;
+			background-color: #f1f1f1;
+			border:1px solid #ddd;
+			box-shadow: 0 0 2px #999;
+
+		}
+	</style>
+</head>
+<body>
+	<h1> Presidential Election Results</h1>
+	<h2>By State &#8231; 2000-2016</h2>
+	<section id="d3ref" class="d3ref-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+				<script src="data/election_results_2000_2016.json"></script>
+				<script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+	              <script src="https://d3js.org/d3.v4.min.js"></script>
+	              <script src="https://d3js.org/d3-array.v1.min.js"></script>
+	              <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+	              <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+                  <svg width="120" height="60">
+                    <rect height="20" width="60" fill="#ca0020"></rect>
+                    <rect x="60" height="20" width="60" fill="#0571b0"></rect>
+                    <text x="5" y="40" fill="black" font-size="10">Republican</text>
+                    <text x="65" y="40" fill="black" font-size="10">Democrat</text>
+
+                  </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	<div id="sliderContainer">
+	    <input id="timeslide" type="range" min="0" max="4" value="0" step="1"/><br>
+	    <span id="range">2000</span>
+	</div>
+	<script>
+		var inputValue = null;
+		var year = ["2000","2004","2008","2012","2016"];
+
+		// Width and Height of the whole visualization
+		var width = 960;
+		var height = 500;
+
+		// Create SVG
+		var svg = d3.select( "body" )
+		    .append( "svg" )
+		    .attr( "width", width )
+		    .attr( "height", height );
+
+		// Append empty placeholder g element to the SVG
+		// g will contain geometry elements
+		var g = svg.append( "g" );
+
+		var albersProjection = d3.geoAlbers()
+		    .scale( 1000 )
+		    .rotate( [96.057,0] )
+		    .center( [0, 39.313] )
+		    .translate( [width/2,height/2] );
+
+		// Create GeoPath function that uses built-in D3 functionality to turn
+		// lat/lon coordinates into screen coordinates
+		var geoPath = d3.geoPath()
+		    .projection( albersProjection );
+
+		g.selectAll( "path" )
+		    .data( election_results_json.features )
+		    .enter()
+		    .append( "path" )
+		    .attr( "fill", "#ccc")
+		    .attr( "stroke", "#333")
+		    .attr( "d", geoPath );
+
+		d3.select("#timeslide").on("input", function() {
+		    update(+this.value);
+		} );
+
+		function update(value) {
+				    document.getElementById("range").innerHTML=year[value];
+				    inputValue = year[value];
+				    d3.selectAll(".incident")
+				        .attr("fill", dateMatch);
+				}
+
+		function dateMatch(data, value) {
+			console.log(inputValue)
+			
+			if (inputValue==2000){
+				var d= data.properties.elect2000
+			    if (d == "R") {
+			        this.parentElement.appendChild(this);
+			        return "#ca0020";
+			    } else {
+			        return "#0571b0";
+			    };
+			}
+
+			else if(inputValue==2004){
+				var d= data.properties.elect2004
+			    if (d == "R") {
+			        this.parentElement.appendChild(this);
+			        return "#ca0020";
+			    } else {
+			        return "#0571b0";
+			    };
+			}
+
+			else if(inputValue==2008){
+				var d= data.properties.elect2008
+			    if (d == "R") {
+			        this.parentElement.appendChild(this);
+			        return "#ca0020";
+			    } else {
+			        return "#0571b0";
+			    };
+			}
+
+			else if(inputValue==2012){
+				var d= data.properties.elect2012
+			    if (d == "R") {
+			        this.parentElement.appendChild(this);
+			        return "#ca0020";
+			    } else {
+			        return "#0571b0";
+			    };
+			}
+
+			else if(inputValue==2016){
+				var d= data.properties.elect2016
+			    if (d == "R") {
+			        this.parentElement.appendChild(this);
+			        return "#ca0020";
+			    } else {
+			        return "#0571b0";
+			    };
+			}
+		    
+		}
+
+		// update the fill of each SVG of class "incident" with value
+		
+
+		function initialDate(data,value){
+		    var d = data.properties.elect2000;
+		    
+		    if (d == "R") {
+		        this.parentElement.appendChild(this);
+		        return "#ca0020";
+		    } else {
+		        return "#0571b0";
+		    };
+		}
+
+		var rodents = svg.append( "g" );
+
+		rodents.selectAll( "path" )
+			.data( election_results_json.features )
+			.enter()
+			.append( "path" )
+			.attr( "fill", initialDate)
+			.attr( "stroke", "white" )
+			.attr( "d", geoPath )
+			.attr( "class", "incident")
+			
+		    
+
+
+	</script>	
+	<p>Data: U.S. National Archives and Records Administration.</p>
+</body>
+</html>
