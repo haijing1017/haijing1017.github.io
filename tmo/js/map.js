@@ -4645,8 +4645,9 @@ map.addLayer({
 }
 }, 'road-label-simple', 'waterway-label');
 
-map.moveLayer('outline');
 map.moveLayer('msa');
+map.moveLayer('outline');
+
 
 
 ///pop up
