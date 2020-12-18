@@ -74,8 +74,8 @@ html, body {
   }
 
 .mapboxgl-popup {
-    max-width: 500px;
-    font: 12px/20px 'Lato', Arial, Helvetica, sans-serif;
+    width: 500px;
+    font: 12px/20px 'Lato';
 }
 
 
