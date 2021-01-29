@@ -6,11 +6,17 @@ html, body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
+
+#intro {
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
 #map { 
     position:relative; 
     display:block;
-    width: 100%;
-    height: 78%;
+    width: 80%;
+    height: 80%;
     margin: auto;
 }
 
@@ -18,7 +24,9 @@ html, body {
 	position: absolute;
 	width:180px;
 	height:15%;
-    padding:10px;
+  padding:10px;
+  left: 10%;
+
 }
 
 .toggle-container ul{
@@ -55,7 +63,7 @@ html, body {
   position: fixed;
   padding: 5px;
   margin-top: 15px;
-  left: 240px;
+  left: 25%;
   width:600px;
   height:15%;
   font-size:11px;
@@ -124,7 +132,7 @@ html, body {
 .description{
     position:absolute;
     background-color: #fff;
-    left: 15px;
+    right: 15px;
     bottom: 30px;
     width: 400px;
     padding: 10px;
