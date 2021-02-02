@@ -48,6 +48,7 @@ type="text/css"
         <p>The analysis presented in these maps examines patterns of vulnerability and neighborhood change in the 25 metropolitan regions (MSAs) in Texas. Metropolitan regions are the dominant nexus of economic activity and population in the state. The ways these regions are growing and changing strongly shape socioeconomic, environmental and health outcomes now and into the future.</p>
         <p>This work examines patterns of neighborhood change in Texas metros over the 2000-2018 period.   The maps portray important socio-demographic characteristics and patterns of change at the census tract level within Texas MSAs. The key measures and methods for this analysis were drawn from the literature on neighborhood vulnerability and neighborhood change, especially <i>Uprooted: Residential Displacement in Austin’s Gentrifying Neighborhoods and What Can Be Done About It (Way, Mueller, and Wegmann, 2018).</i></p>
         <br>
+        <a id="Vul"></a>
         <h3>Vulnerability Measure</h3>
         <p>The first key measure developed is a vulnerability index for each census tract in the Texas MSAs.  The vulnerability index registers demographic and socioeconomic factors in a neighborhood (or census tract) that may make it more vulnerable to a range of factors including displacement due to rising housing costs, environmental shocks (such as flooding) and public health challenges (such as COVID-19). The vulnerability index was constructed from a short list of indicators that researchers have identified as making communities more susceptible to housing cost increases and other changes or shocks. As Way et al. state, “Social vulnerability refers to the differing ability of members of particular socio-demographic groups to withstand threats to their livelihoods, security, and social, economic and political networks.” (Way, Mueller and Wegmann, 2018, p. 19).</p>
         <p>The vulnerability index for each census tract is constructed from five variables: </p>
@@ -67,9 +68,9 @@ type="text/css"
         <table>
             <tr>
                 <th>Neighborhood Type</th>
-                <th>Vulnerable Tracts 2000, 2018 Census(14-18 ACS)</th>
-                <th><a href="DemoChange">Demographic Change</a> between 2000 Census and 2018 Census(14-18 ACS)</th>
-                <th>Housing Market Change 2000, 2018 Census(14-18 ACS)</th>
+                <th><a href="#Vul">Vulnerable Tracts</a> 2000, 2018 Census(14-18 ACS)</th>
+                <th><a href="#DemoChange">Demographic Change</a> between 2000 Census and 2018 Census(14-18 ACS)</th>
+                <th><a href="#Housing">Housing Market Change</a> 2000, 2018 Census(14-18 ACS)</th>
             </tr>
             <tr>
                 <td>Vulnerable, not Gentrifying</td>
@@ -112,6 +113,7 @@ type="text/css"
         <li>4)  Income –increase in median family income.</li>
         <p>Census tracts within the 25 MSAs were considered as experiencing socio-demographic change if at least two of the four variables above had significantly higher change values than the average in the given MSA. The significance of the tract difference was estimated with a Z-score. If the Z-score for at least two of the above variables exceeded +0.5 the tract was designated as experiencing significant demographic change over the 2000-2018 period.</p>
         <br>
+        <a id="Housing"></a>
         <h3>Housing Market Change</h3>
         <p>Second, in evaluating displacement risk we examined change in the median value of owner-occupied (or in a few cases median rents) in the census tracts of principle city of an MSA.  To assess housing cost dynamics we used three variables:</p>
         <li>1)  Housing Value 2000 - Median housing value (median gross rent if the housing value is not available) in census tract compared to the median value of the principle city.</li>
