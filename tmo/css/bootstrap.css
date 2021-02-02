@@ -2250,6 +2250,7 @@ pre code {
 }
 table {
   background-color: transparent;
+
 }
 caption {
   padding-top: 8px;
@@ -2257,15 +2258,25 @@ caption {
   color: #777;
   text-align: left;
 }
-th {
-  text-align: left;
+
+tr:nth-child(even){
+  background-color: #eee;
+}
+tr:nth-child(odd){
+  background-color: #fff;
 }
 .table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  border: 1px solid black;
 }
-.table > thead > tr > th,
+.table > th{
+  text-align: left;
+  padding: 15px;
+  background-color: black;
+  color: white;
+}
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
 .table > thead > tr > td,
