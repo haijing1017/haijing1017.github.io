@@ -4817,8 +4817,8 @@ function updateToggles(){
 }
 
 var sites = [
-    {name: "About Vulnerability:", link:"5factor.jpg", description: "We use five factors to determine a specific neighborhood's vulnerability to displacement through gentrification.Based on these factors (shown below), each neighborhood is assigned a vulnerability score. Neighborhoods with vulnerability scores above .5 are considered vulnerable. The higher the vulnerability score, the more vulnerable residents are to displacement as a result of rising housing costs."},
-    {name: "About Gentrification", link:"type.jpg", description: "Vulnerability, demographic change, and housing market change all determine a neighborhood overall gentrification type. The table below shows how each type is defined."},
+    {name: "About Vulnerability:", link:"5factor.jpg", description: "We use five factors to determine a specific neighborhood's vulnerability to displacement through gentrification. Based on these factors (shown below), each neighborhood is assigned a vulnerability score. Neighborhoods with vulnerability scores above .5 are considered vulnerable. The higher the vulnerability score, the more vulnerable residents are to displacement as a result of rising housing costs."},
+    {name: "About Gentrification", link:"type.jpg", description: "Vulnerability, demographic change, and housing market change all determine a neighborhood's overall gentrification type. The table below shows how each type is defined."},
 ]
 
 $(".description").hide();
