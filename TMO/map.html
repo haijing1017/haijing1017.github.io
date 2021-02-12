@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Neighborhood Vulnerability and Displacement Risks in Texas Metropolitan Regions</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <link href="css/slideshow.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">   
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js">
+</script>
+
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+type="text/css"
+/>
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+<!-- <section class="intro-section">
+    
+              
+    </div>
+</section> -->
+
+<section class="map-section"> 
+  
+    <div id='map'>
+     <div class="description0">
+                <div class = "description-wrapper">
+                    <li><span class="close-button"><i class="fa fa-times-circle"></i></span></li>
+                    <h5>About this Map</h5>
+                    <p> On the upper right box, you can type in any of the major MSAs in Texas to explore. There are three layers on this map, which are listed below. Click to toggle the layers on or off. Each census tract can be zoomed in and clicked on for more detailed information. </p>
+            </div>
+        </div>        
+        <div class="description">
+            <div class = "description-wrapper">
+                <li><span class="close-button"><i class="fa fa-times-circle"></i></span></li>
+                <h5 id="site-title"></h5>
+                <p id="site-description"></p>
+                <img id="site-streetview"></img>
+            </div>
+        </div>
+    </div>
+    
+    <div class='toggle-container' id='point-toggle-container'>
+        <ul>
+            <li><span class="left-button"><i class="fa fa-circle-o deactivated" id="type-toggle"></i></span></li>
+            <li><p>Displacement Risk</p></li>
+        </ul>
+        <ul>
+            <li><span class="left-button"><i class="fa fa-circle-o deactivated" id="yr00-toggle"></i></span></li>
+            <li><p>Vulnability 2000</p></li>
+        </ul>
+        <ul>
+            <li><span class="left-button"><i class="fa fa-circle-o deactivated" id="yr18-toggle"></i></span></li>
+            <li><p>Vulnability 2018</p></li>
+        </ul>
+    </div>
+
+    <div class='legend' id='typology-legend'>  
+                <span style='background:#FFF200; outline: dashed;outline-width: 0.7px'></span>
+                <p>Vulnerable, not gentrifying</p>
+                <span style='background:#FFCF0D;outline: dashed;outline-width: 0.7px'></span>
+                <p>Susceptible</p>
+                <span style='background:#FFA800; outline: dashed;outline-width: 0.7px'></span>
+                <p>Early</p>
+                <span style='background:#FF5500; outline: dashed;outline-width: 0.7px'></span>
+                <p>Middle</p>
+                <span style='background:#E33D00; outline: dashed;outline-width: 0.7px'></span>
+                <p>Late</p>
+    </div>
+
+    <div class='legend' id='vul00-legend'>  
+                <span style='background:#CBEAF7; outline: dashed;outline-width: 0.7px'></span>
+                <p>Vulnerable in 2000</p>
+                <span style='background:#B7DA89; outline: dashed;outline-width: 0.7px'></span>
+                <p>Vulnerable in 2018</p>
+                <span style='background:#80C27E; outline: dashed;outline-width: 0.7px'></span>
+                <p>Vulnerable in 2000 and in 2018</p>
+
+    </div>
+</section>
+
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src='js/map.js'>
+        map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+    </script>
+    
+
+</body>
+
+</html>

@@ -4586,7 +4586,7 @@ map.addLayer({
     'type':'line',
     'source':'Typology',
     'maxzoom':7,
-    'paint':{'line-width':0.1
+    'paint':{'line-width':0.1,'line-opacity':0.2
 
         }
 
