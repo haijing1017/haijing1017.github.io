@@ -860,9 +860,10 @@ body.modal-open {
 
 
 .profile-image {
-    width: 400%;
+    width: 300%;
     height: auto;
     display: block;
+    max-width: 300px; /* Limits the maximum width of the image */
     border-radius: 8px; /* Optional: adds rounded corners to the image */
 }
 
